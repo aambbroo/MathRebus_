@@ -13,10 +13,10 @@ typedef struct accord {
 };
 struct accord Local_Accord[10];
 
-int Nums[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+int Nums[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 char Letters[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 char First_Item[11], Second_Item[11], Third_Item[11], Fourth_Item[11], Fifth_Item[11], Sixth_Item[11], Seventh_Item[11], Amount_Item[11];
-short Border = 0;//для чего?
+short Border = 0;//
 short Term_Nums = 2; //слагаемые
 short Letter_Max_Nums = 1; //максимальное количество цифр
 
