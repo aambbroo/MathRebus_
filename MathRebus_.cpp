@@ -41,7 +41,7 @@ void Print_Result();
 
 /*Проверка на нахождения в слагаемом или сумме*/
 
-bool Letter_Check(char check) {
+inline bool Letter_Check(char check) {
     for (int i = 0; i < 26; i++) {
         if (Letters[i] == check) return true;
     }
@@ -51,7 +51,7 @@ bool Letter_Check(char check) {
 
 /*Инициализация значений логическх переменных*/
 
-void Term_Init(void) {
+inline void Term_Init(void) {
     for (short i = 0; i < 10; i++)
         Check[i] = false;
     Check_All_Nums = false;
@@ -61,7 +61,7 @@ void Term_Init(void) {
 
 /*Получаем указатель на соответсвующую переменную: слагаемое 1 - 7 или сумма*/
 
-char* Choice(short i) {
+inline char* Choice(short i) {
     if (i == 1)
         return First_Item;
     else if (i == 2)
@@ -82,7 +82,7 @@ char* Choice(short i) {
 
 /*Разделяем входную строку на слагаемые и сумму*/
 
-void Make_Items(char String[102]) {
+inline void Make_Items(char String[102]) {
     char b = '\0', bb = '\n';
     char c;
     char* Word = NULL;
@@ -123,7 +123,7 @@ void Make_Items(char String[102]) {
 
 /*Проверка на простые ошибки*/
 
-void Errors_Check() {
+inline void Errors_Check() {
     printf("First item is %s.\n", First_Item);
     printf("Second item is %s.\n", Second_Item);
     printf("Third item is %s.\n", Third_Item);
@@ -139,13 +139,13 @@ void Errors_Check() {
 
 /*Занесение значение в Local_Accord*/
 
-short Accord_Check(char c) {
+inline short Accord_Check(char c) {
     for (short i = 0; i < 10; i++)
         if (c == Local_Accord[i].Char) return Local_Accord[i].Num;
     return -1;
 }
 
-void Form_Accord_Struct() {
+inline void Form_Accord_Struct() {
     char* Item;
     char letter;
     for (short i = 1; i <= Term_Nums; i++) {
@@ -178,14 +178,14 @@ void Form_Accord_Struct() {
     }
 }
 
-short Num_Return(char c) {
+inline short Num_Return(char c) {
     for (short i = 0; i < 10; i++) {
         if (c == Local_Accord[i].Char) return Local_Accord[i].Num;
     }
     return -1;
 }
 
-void Make_Case() {
+inline void Make_Case() {
     char* Item;
     char c;
     unsigned long long m = 1;
@@ -230,7 +230,7 @@ void Make_Case() {
 
 /*Проверка решения*/
 
-bool Try() {
+inline bool Try() {
     Make_Case();
     if (Border != -1)
         if (Items[0] + Items[1] + Items[2] + Items[3] + Items[4] + Items[5] + Items[6] == Items[7]) return true;
