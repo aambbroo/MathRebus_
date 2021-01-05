@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
+
+
 
 typedef struct accord {
     char Char;
@@ -21,6 +24,18 @@ short Letter_Max_Nums = 1; //максимальное количество ци�
 bool Check[10], Check_All_Nums;
 
 unsigned long long Items[8]; //Items[0] == First_Item etc...
+
+clock_t start, start_bruteforce, end;
+
+void Print_Time() {
+    end = clock();
+    int msec, msec_bruteforce;
+    msec = (end - start) * 1000 / CLOCKS_PER_SEC;
+    msec_bruteforce = (end - start_bruteforce) * 1000 / CLOCKS_PER_SEC;
+    printf("\n\nAll time is %d seconds %d milliseconds.", msec / 1000, msec % 1000);
+    printf("\n\nBruteforce time is %d seconds %d milliseconds.", msec_bruteforce / 1000, msec_bruteforce % 1000);
+}
+
 
 void Print_Result();
 
@@ -303,10 +318,13 @@ int main()
         scanf("%c", &c);
         S[++i] = c;
     }
+    start = clock();
     Make_Items(S);
     Errors_Check();
     Form_Accord_Struct();
+    start_bruteforce = clock();
     Bruteforce();
+    Print_Time();
     Print_Result();
     return 0;
 }
