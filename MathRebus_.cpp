@@ -10,6 +10,7 @@
 typedef struct accord {
     char Char;
     short Num;
+    bool Use;
 };
 struct accord Local_Accord[10];
 
@@ -157,6 +158,7 @@ inline void Form_Accord_Struct() {
                 for (offset = 0; offset < 10; offset++) {
                     if (!isalpha(Local_Accord[offset].Char)) {
                         Local_Accord[offset].Char = letter;
+                        Local_Accord[offset].Use = true;
                         offset = 10;
                     }
                 }
@@ -171,6 +173,7 @@ inline void Form_Accord_Struct() {
             for (offset = 0; offset < 10; offset++) {
                 if (!isalpha(Local_Accord[offset].Char)) {
                     Local_Accord[offset].Char = letter;
+                    Local_Accord[offset].Use = true;
                     offset = 10;
                 }
             }
@@ -246,39 +249,39 @@ void Bruteforce() {
         short offset = 9;
         Local_Accord[offset].Num = Nums[i];
         for (short j = 0; j < 10; j++) {
-            if (j == i) continue;
+            if ((Local_Accord[offset].Use) && (j == i)) continue;
             offset = 8;
             Local_Accord[offset].Num = Nums[j];
             for (short k = 0; k < 10; k++) {
-                if (k == j || k == i) continue;
+                if ((Local_Accord[offset].Use) && (k == j || k == i)) continue;
                 offset = 7;
                 Local_Accord[offset].Num = Nums[k];
                 for (short l = 0; l < 10; l++) {
-                    if (l == k || l == j || l == i) continue;
+                    if ((Local_Accord[offset].Use) && (l == k || l == j || l == i)) continue;
                     offset = 6;
                     Local_Accord[offset].Num = Nums[l];
                     for (short p = 0; p < 10; p++) {
-                        if (p == l || p == k || p == j || p == i) continue;
+                        if ((Local_Accord[offset].Use) && (p == l || p == k || p == j || p == i)) continue;
                         offset = 5;
                         Local_Accord[offset].Num = Nums[p];
                         for (short o = 0; o < 10; o++) {
-                            if (o == p || o == l || o == k || o == j || o == i) continue;
+                            if ((Local_Accord[offset].Use) && (o == p || o == l || o == k || o == j || o == i)) continue;
                             offset = 4;
                             Local_Accord[offset].Num = Nums[o];
                             for (short u = 0; u < 10; u++) {
-                                if (u == o || u == p || u == l || u == k || u == j || u == i) continue;
+                                if ((Local_Accord[offset].Use) && (u == o || u == p || u == l || u == k || u == j || u == i)) continue;
                                 offset = 3;
                                 Local_Accord[offset].Num = Nums[u];
                                 for (short y = 0; y < 10; y++) {
-                                    if (y == u || y == o || y == p || y == l || y == k || y == j || y == i) continue;
+                                    if ((Local_Accord[offset].Use) && (y == u || y == o || y == p || y == l || y == k || y == j || y == i)) continue;
                                     offset = 2;
                                     Local_Accord[offset].Num = Nums[y];
                                     for (short t = 0; t < 10; t++) {
-                                        if (t == y || t == u || t == o || t == p || t == l || t == k || t == j || t == i) continue;
+                                        if ((Local_Accord[offset].Use) && (t == y || t == u || t == o || t == p || t == l || t == k || t == j || t == i)) continue;
                                         offset = 1;
                                         Local_Accord[offset].Num = Nums[t];
                                         for (short x = 0; x < 10; x++) {
-                                            if (x == t || x == y || x == u || x == o || x == p || x == l || x == k || x == j || x == i) continue;
+                                            if ((Local_Accord[offset].Use) && (x == t || x == y || x == u || x == o || x == p || x == l || x == k || x == j || x == i)) continue;
                                             offset = 0;
                                             Local_Accord[offset].Num = Nums[x];
                                             if (Try()) return;
