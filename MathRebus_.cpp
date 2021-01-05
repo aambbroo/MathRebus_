@@ -19,7 +19,7 @@ char Letters[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
 char First_Item[11], Second_Item[11], Third_Item[11], Fourth_Item[11], Fifth_Item[11], Sixth_Item[11], Seventh_Item[11], Amount_Item[11];
 short Border = 0;//
 short Term_Nums = 2; //слагаемые
-short Letter_Max_Nums = 1; //максимальное количество цифр
+short Letter_Max_Nums = 1; //максимальное количество цифр - то есть длина item
 
 //bool Check1 = false, Check2, Check3, Check4, Check5, Check6, Check7, Check8, Check9, Check0, Check_All_Nums;
 bool Check[10], Check_All_Nums;
@@ -195,7 +195,7 @@ inline void Make_Case() {
     for (short i = 1; i <= Term_Nums; i++) {
         Item = Choice(i);
         m = 1;
-        for (short j = strlen(Item) - 1; j >= 0; j--) {//??
+        for (short j = strlen(Item) - 1; j >= 0; j--) {//
             c = Item[j];
             short k = Num_Return(c);
             if (k == -1) {
@@ -213,7 +213,7 @@ inline void Make_Case() {
     }
     Item = Choice(8);
     m = 1;
-    for (short j = strlen(Item) - 1; j >= 0; j--) {//??
+    for (short j = strlen(Item) - 1; j >= 0; j--) {//
         c = Item[j];
         short k = Num_Return(c);
         if (k == -1) {
@@ -240,6 +240,21 @@ inline bool Try() {
     for (short i = 0; i < 8; i++)
         Items[i] = 0;
     return false;
+}
+
+inline bool Check_() {
+    char* Item;
+    char c;
+    short s = 0;
+    for (short i = 1; i <= Term_Nums; i++) {
+        Item = Choice(i);
+        c = Item[strlen(Item) - 1];
+        s += Num_Return(c);
+    }
+    Item = Choice(8);
+    c = Item[strlen(Item) - 1];
+    if (s % 10 == Num_Return(c)) return true;
+    else return false;
 }
 
 /*Подбор*/
@@ -284,6 +299,7 @@ void Bruteforce() {
                                             if ((Local_Accord[offset].Use) && (x == t || x == y || x == u || x == o || x == p || x == l || x == k || x == j || x == i)) continue;
                                             offset = 0;
                                             Local_Accord[offset].Num = Nums[x];
+                                            if (!Check_()) continue;
                                             if (Try()) return;
                                             //Print_Result();
                                         }
