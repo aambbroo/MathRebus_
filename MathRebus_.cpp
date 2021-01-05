@@ -147,7 +147,7 @@ inline short Accord_Check(char c) {
 }
 
 inline void Form_Accord_Struct() {
-    char* Item;
+    char* Item = NULL;
     char letter;
     for (short i = 1; i <= Term_Nums; i++) {
         Item = Choice(i);
@@ -189,7 +189,7 @@ inline short Num_Return(char c) {
 }
 
 inline void Make_Case() {
-    char* Item;
+    char* Item = NULL;
     char c;
     unsigned long long m = 1;
     for (short i = 1; i <= Term_Nums; i++) {
@@ -243,7 +243,7 @@ inline bool Try() {
 }
 
 inline bool Check_() {
-    char* Item;
+    char* Item = NULL;
     char c;
     short s = 0;
     for (short i = 1; i <= Term_Nums; i++) {
